@@ -1,0 +1,124 @@
+services:
+  host0:
+    build: .
+    environment:
+      - HOST_ID=0
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9100:9100"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.2
+    command: ./app/app 0 ${NUM_HOSTS} 9100
+
+  host1:
+    build: .
+    environment:
+      - HOST_ID=1
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9101:9101"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.3
+    command: ./app/app 1 ${NUM_HOSTS} 9101
+
+  host2:
+    build: .
+    environment:
+      - HOST_ID=2
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9102:9102"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.4
+    command: ./app/app 2 ${NUM_HOSTS} 9102
+
+  host3:
+    build: .
+    environment:
+      - HOST_ID=3
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9103:9103"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.5
+    command: ./app/app 3 ${NUM_HOSTS} 9103
+
+  host4:
+    build: .
+    environment:
+      - HOST_ID=4
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9104:9104"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.6
+    command: ./app/app 4 ${NUM_HOSTS} 9104
+
+  host5:
+    build: .
+    environment:
+      - HOST_ID=5
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9105:9105"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.7
+    command: ./app/app 5 ${NUM_HOSTS} 9105
+
+  host6:
+    build: .
+    environment:
+      - HOST_ID=6
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9106:9106"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.8
+    command: ./app/app 6 ${NUM_HOSTS} 9106
+
+  host7:
+    build: .
+    environment:
+      - HOST_ID=7
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9107:9107"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.9
+    command: ./app/app 7 ${NUM_HOSTS} 9107
+
+  host8:
+    build: .
+    environment:
+      - HOST_ID=8
+      - NUM_HOSTS=${NUM_HOSTS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "9108:9108"
+    networks:
+      cluster_net:
+        ipv4_address: 172.18.0.10
+    command: ./app/app 8 ${NUM_HOSTS} 9108
+
+networks:
+  cluster_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
